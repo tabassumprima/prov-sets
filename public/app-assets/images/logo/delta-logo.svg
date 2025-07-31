@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+	 x="0px" y="0px" viewBox="0 0 518 205.096" width="500.308" height="205.096" xml:space="preserve">
+  <defs>
+    <linearGradient gradientUnits="userSpaceOnUse" x1="358.007" y1="87.469" x2="358.007" y2="292.564" id="gradient-0" gradientTransform="matrix(0.999988, -0.004761, 0.003106, 0.652174, -11.106203, -49.50132)">
+      <stop offset="0" style="stop-color: rgb(37, 100, 193);"></stop>
+      <stop offset="1" style="stop-color: rgb(0, 51, 102);"></stop>
+    </linearGradient>
+  </defs>
+  <path d="M 97.683 16.63 L 178.256 130.644 L 17.109 130.644 L 97.683 16.63 Z" data-bx-shape="triangle 17.109 16.63 161.147 114.014 0.5 0 1@1519ccd9" style="fill: none; stroke-width: 13px; stroke: url(#gradient-0);"></path>
+  <path style="fill: rgb(216, 216, 216); stroke-width: 10px; stroke: url(#gradient-0);" d="M 93.542 28.733 L 135.737 89.243"></path>
+  <text style="fill: url(#gradient-0); font-family: Arial, sans-serif; font-size: 183.6px; letter-spacing: -19.3px; white-space: pre;" x="173.591" y="137.102">Delta</text>
+</svg>

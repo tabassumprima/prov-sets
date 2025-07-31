@@ -1,0 +1,9 @@
+<?php
+
+return [
+
+'created' => '$MODEL$ :NAME has been created succesfully!',
+'updated' => '$MODEL$ :NAME has been updated succesfully!',
+'deleted' => '$MODEL$ has been deleted succesfully!',
+
+];

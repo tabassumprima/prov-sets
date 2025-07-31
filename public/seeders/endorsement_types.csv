@@ -1,0 +1,29 @@
+organization_id,incremental_id,endo_type,endo_desc,endo_desc_takaful
+1,1,CR,CHANGE IN CORPORATE POOL,CHANGE IN CORPORATE POOL
+1,2,HT,Change in Product/Cover/Tariff (Financial),Change in Product/Cover/Tariff (Financial)
+1,3,OD,CO-INSURANCE TO DIRECT,CO-TAKAFUL TO DIRECT
+1,4,SS,STOP / RE-INSTATE ( DO NOT USE ),STOP / RE-INSTATE ( DO NOT USE )
+1,5,CP,CHANGE IN PERIL,CHANGE IN PERIL
+1,6,CD,CHANGE IN DISCOUNT,CHANGE IN DISCOUNT
+1,7,DL,DIRECT TO CO-INSURANCE,DIRECT TO CO-TAKAFUL
+1,8,AC,AGENCY CHANGE,AGENCY CHANGE
+1,9,CI,CO-INSURER CHANGE,CO-TAKAFUL CHANGE
+1,10,NF,NON-FINANCIAL,NON-FINANCIAL
+1,11,PC,PERIOD CHANGE,PERIOD CHANGE
+1,12,DC,DOCUMENT CANCELLATION,DOCUMENT CANCELLATION
+1,13,AP,ACCEPTED POLICY,ACCEPTED PMD
+1,14,FD,FIRE DECLARATION,FIRE DECLARATION
+1,15,SP,SUM INSURED FOR PARTICULAR PERIOD,SUM COVERED FOR PARTICULAR PERIOD
+1,16,ID,DONT USE,DONT USE
+1,17,IW,ITEM WISE,ITEM WISE
+1,18,CC,CHANGE IN CHARGES,CHANGE IN CHARGES
+1,19,OC,COINSURANCE OTHER SERVICE CHARGES,CO-TAKAFUL OTHER SERVICE CHARGES
+1,20,LC,Add/Modify (-/+)  Co-Insurance Charges,Add/Modify (-/+)  Co-Takaful Charges
+1,21,DR,Revive Cancelled Document/Policy,Revive Cancelled Document/PMD
+1,22,RP,Reversal Endorsement For Period Change,Reversal Endorsement For Period Change
+1,23,PE,Period Extend,Period Extend
+1,24,PR,Period Reduce,Period Reduce
+1,25,CL,Change in Limit of Liability,Change in Limit of Liability
+1,26,HC,Change in Product/Cover (Non-Financial),Change in Product/Cover (Non-Financial)
+1,27,PD,Add/Update Policy Discount,Add/Update PMD Discount
+1,28,SC,Change in our share of other lead documents,Change in our share of other lead documents

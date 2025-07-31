@@ -1,0 +1,201 @@
+    	{
+    "title": "Balance sheet",
+    "query_items": [
+                "43",
+                "65",
+                "70",
+                "76",
+                "303",
+                "309",
+                "313",
+                "344",
+                "351",
+                "355",
+                "383",
+                "396",
+                "401",
+                "418",
+                "422",
+                "429",
+                "435",
+                "458",
+                "467",
+                "492",
+                "592",
+                "598",
+                "602",
+                "611",
+                "617",
+                "631",
+                "662"
+    ],
+    "line_items": [
+        {
+            "slug": "FI",
+            "description": "Financial investments",
+            "type": "file",
+            "level": [
+                "43",
+                "76",
+                "355"
+            ]
+        },
+        {
+            "slug": "PE",
+            "description": "Property and equipment",
+            "type": "file",
+            "level": [
+                "65"
+            ]
+        },
+        {
+            "slug": "IA",
+            "description": "Insurance contract assets",
+            "type": "file",
+            "level": [
+                "70",
+                "309",
+                "313",
+                "351",
+                "422",
+                "429"
+            ]
+        },
+        {
+            "slug": "CB",
+            "description": "Cash and bank",
+            "type": "file",
+            "level": [
+                "303"
+            ]
+        },
+        {
+            "slug": "RA",
+            "description": "Reinsurance contract assets",
+            "type": "file",
+            "level": [
+                "344"
+            ]
+        },
+        {
+            "slug": "LR",
+            "description": "Loans and other receivables",
+            "type": "file",
+            "level": [
+                "383",
+                "396",
+                "401"
+            ]
+        },
+        {
+            "slug": "TA",
+            "description": "Tax asset",
+            "type": "file",
+            "level": [
+                "418"
+            ]
+        },
+         {
+            "slug": "TS",
+            "description": "Total assets",
+            "type": "agg",
+            "style": "font-weight-bold",
+            "level": [
+                "FI",
+                "PE",
+                "IA",
+                "CB",
+                "RA",
+                "LR",
+                "TA"
+            ],
+            "expression" : "FI + PE + IA + CB + RA + LR + TA"
+        },
+        {
+            "slug": "BR-1",
+            "type": "break"
+        },
+        {
+            "slug": "SC",
+            "description": "Share capital",
+            "type": "file",
+            "level": [
+                "435"
+            ]
+        },
+        {
+            "slug": "RS",
+            "description": "Reserves",
+            "type": "file",
+            "level": [
+                "458"
+            ]
+        },
+        {
+            "slug": "UP",
+            "description": "Unappropriated profit",
+            "type": "file",
+            "level": [
+                "662"
+            ]
+        },
+        {
+            "slug": "TE",
+            "description": "Total equity",
+            "style": "font-weight-bold",
+            "type": "agg",
+            "level": [
+                "SC",
+                "RS",
+                "UP"
+            ],
+            "expression" : "SC + RS + UP"
+        },
+        {
+            "slug": "BR-2",
+            "type": "break"
+        },  
+        {
+            "slug": "IL",
+            "description": "Insurance contract liabilities",
+            "type": "file",
+            "level": [
+                "467",
+                "492",
+                "611",
+                "617",
+                "631"
+            ]
+        },
+        {
+            "slug": "OC",
+            "description": "Other creditors and accruals",
+            "type": "file",
+            "level": [
+                "592",
+                "602"
+            ]
+        },
+        {
+            "slug": "DT",
+            "description": "Deferred taxation",
+            "type": "file",
+            "level": [
+                "598"
+            ]
+        },
+        {
+            "slug": "TL",
+            "description": "Total liabilities",
+            "style": "font-weight-bold",
+            "type": "agg",
+            "level": [
+                "IL",
+                "OC",
+                "DT"
+            ],
+            "expression" : "IL + OC + DT"
+        }
+    ]
+
+}

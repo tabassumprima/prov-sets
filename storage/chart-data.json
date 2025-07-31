@@ -1,0 +1,50 @@
+{
+  "stats": {
+    "totalPremium": "DL01004-02001",
+    "netClaims": "DL01005-02002",
+    "expenses": "DL01005-02003"
+  },
+  "lossRatioChart": {
+    "premium": "DL01004-02001",
+    "claims": "DL01005-02002"
+  },
+  "segmentBreakupChart": {
+    "data": "DL01004-02001-03001-04001"
+  },
+  "businessSnapshotChart": {
+    "premium": "DL01004-02001",
+    "claims": "DL01005-02002"
+  },
+  "googleMap": {
+    "premium": "DL01004-02001",
+    "claims": "DL01005-02002"
+  },
+  "config": {
+    "stats": {
+      "agg": "totalPremium - expenses - netClaims",
+      "agg_key": "netResult"
+    },
+    "lossRatioChart": {
+      "agg": "claims % premium",
+      "agg_key": "data"
+    },
+    "segmentBreakupChart": {
+      "labels": "",
+      "groupBy": "portfolio"
+    },
+    "googleMap": {
+      "agg": "claims % premium",
+      "loop": true,
+      "agg_key": "lossRatio",
+      "groupBy": "branch",
+      "labels": ""
+    },
+    "businessSnapshotChart": {
+      "agg": "claims % premium",
+      "loop": true,
+      "agg_key": "lossRatio",
+      "groupBy": "month",
+      "labels": ""
+    }
+  }
+}

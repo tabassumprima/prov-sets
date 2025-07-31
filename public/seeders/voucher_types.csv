@@ -1,0 +1,29 @@
+organization_id,incremental_id,voucher_type,voucher_desc
+1,1,CLJV,Claims Journal Vouchers
+1,2,CPV,Cash Payment Voucher
+1,3,RIJV,Re-Insurance Journal Voucher
+1,4,UWJV,Underwriting Journal Voucher
+1,5,CPVR,Cash Payment Voucher Reversal
+1,6,CMJV,Commission Provision Journal Voucher
+1,7,TJV,Money Transfer Journal Voucher
+1,8,MJV,Journal Voucher
+1,9,SJV,System Generated Voucher
+1,10,DBN,Debit Note
+1,11,CRN,Credit Note
+1,12,BPV,Bank Payment Voucher
+1,13,BRV,Bank Receipt Voucher
+1,14,CRV,Cash Receipt Voucher
+1,15,PRB,Premium Receipt Voucher (Bank)
+1,16,PRC,Premium Receipt Voucher (Cash)
+1,17,IBV,Inter Bank Transfer Voucher
+1,18,CRVR,Cash Receipt Voucher Reversal
+1,19,CRNR,Credit Note Reversal
+1,20,DBNR,Debit Note Reversal
+1,21,IBVR,Inter Bank Transfer Voucher Reversal
+1,22,PRCR,Premium Receipt Voucher (Cash) Reversal
+1,23,PRBR,Premium Receipt Voucher (Bank) Reversal
+1,24,BRVR,Bank Receipt Voucher Reversal
+1,25,BPVR,Bank Payment Voucher Reversal
+1,26,MJVR,Journal Voucher Reversal
+1,27,ATV,Advance Tax Voucher
+1,28,ATVR,Advance Tax Voucher Reversal

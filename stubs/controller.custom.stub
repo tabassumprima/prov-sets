@@ -1,0 +1,136 @@
+<?php
+
+namespace $NAMESPACE$;
+
+use App\Http\Controllers\Controller;
+use App\Http\Requests\$CLASS_NAME$\Request;
+use App\Services\$CLASS_NAME$Service;
+use Illuminate\Support\Facades\Log;
+use App\Helpers\RouterHelper;
+
+class $CLASS_NAME$Controller extends Controller
+{
+    private $$SERVICE_NAME$, $router, $routerHelper;
+
+    public function __construct($CLASS_NAME$Service $$SERVICE_NAME$)
+    {
+        $this->router = '$ROUTER_NAME$.index';
+        $this->$SERVICE_NAME$ = $$SERVICE_NAME$;
+        $this->routerHelper = new RouterHelper;
+    }
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        $$VARIABLE_NAME_PLURAL$ = $this->$SERVICE_NAME$->fetchAll();
+        return view('$VIEW_FOLDER$.$VIEW_NAME$.index', compact('$VARIABLE_NAME_PLURAL$'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        return view('$VIEW_FOLDER$.$VIEW_NAME$.create');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \App\Http\Requests\$CLASS_NAME$\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        $error = false;
+        $message = trans('$TRANSLATION_FOLDER$/$TRANSLATION$.created', ['NAME' => $request->name]);
+        $request->validated();
+        try {
+            $this->$SERVICE_NAME$->create($request);
+        } catch (\Exception $e) {
+            $error = true;
+            $message = $e->getMessage();
+            Log::error($e);
+        }
+        if ($error)
+            return $this->routerHelper->redirectBack($error, $message);
+        return $this->routerHelper->redirect($this->router, $error, $message);
+        return view('$VIEW_FOLDER$.$VIEW_NAME$.create');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        //
+    }
+
+     /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        $currency = $this->$SERVICE_NAME$->fetch($id);
+        return view('$VIEW_FOLDER$.$VIEW_NAME$.edit', compact('currency'));
+    }
+
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \App\Http\Requests\$CLASS_NAME$\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        $error = false;
+        $message = trans('$TRANSLATION_FOLDER$/$TRANSLATION$.updated', ['NAME' => $request->name]);
+        $request->validated();
+        try {
+            $this->$SERVICE_NAME$->update($request, $id);
+        } catch (\Exception $e) {
+            $error = true;
+            $message = $e->getMessage();
+            Log::error($e);
+        }
+
+        if ($error)
+            return $this->routerHelper->redirectBack($error, $message);
+        return $this->routerHelper->redirect($this->router, $error, $message);
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        $error = false;
+        $message = trans('$TRANSLATION_FOLDER$/$TRANSLATION$.deleted');
+        try {
+            $this->$SERVICE_NAME$->delete($id);
+        } catch (\Exception $e) {
+            $error = true;
+            $message = $e->getMessage();
+            Log::error($e);
+        }
+        if ($error)
+            return $this->routerHelper->redirectBack($error, $message);
+        return $this->routerHelper->redirect($this->router, $error, $message);
+    }
+}

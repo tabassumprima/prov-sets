@@ -1,0 +1,67 @@
+{
+  "title": "P&L Cost Report",
+  "query_items": [
+    "860",
+    "835",
+    "807",
+    "817",
+    "807",
+    "869",
+    "977"
+  ],
+  "line_items": [
+    {
+      "slug": "P&L-IR",
+      "description": "Insurance revenue",
+      "type": "file",
+      "level": [
+        "860"
+      ]
+    },
+    {
+      "slug": "P&L-ISE",
+      "description": "Insurance service expense",
+      "type": "file",
+      "level": [
+        "835",
+        "807"
+      ]
+    },
+    {
+      "slug": "P&L-ISEBE",
+      "description": "Insurance service results before reinsurance",
+      "type": "agg",
+      "style": "font-weight-bold",
+      "expression": "P&L-IR - P&L-ISE"
+    },
+    {
+      "slug": "b",
+      "type":"break"
+    },
+    {
+      "slug": "P&L-ARP",
+      "description": "Allocation of reinsurance premiums",
+      "type": "file",
+      "level": [
+        "817",
+        "807"
+      ]
+    },
+    {
+      "slug": "P&L-ARR",
+      "description": "Amounts recoverable from reinsurers",
+      "type": "file",
+      "level": [
+        "869",
+        "977"
+      ]
+    },
+    {
+      "slug": "P&L-NEFCH",
+      "description": "Net expense from reinsurance contracts held",
+      "type": "agg",
+      "style": "font-weight-bold",
+      "expression": "P&L-ARP - P&L-ARR"
+    }
+  ]
+}
