@@ -40,6 +40,12 @@ $(document).ready(function() {
             },
             {
                 type: 'dropdown',
+                title: 'Discount Rates ',
+                width: 150,
+                source: discount_rates,
+            },
+            {
+                type: 'dropdown',
                 title: 'Discount Rates (LRC)',
                 width: 150,
                 source: discount_rates,
@@ -71,7 +77,13 @@ $(document).ready(function() {
                 width: 150,
                 mask: '0.00',
             },
-
+            {
+                type: 'dropdown',
+                title: 'Risk Adjustments ',
+                width: 150,
+                autocomplete: true,
+                source: risk_adjustments,
+            },
             {
                 type: 'dropdown',
                 title: 'Risk Adjustments (LRC)',
