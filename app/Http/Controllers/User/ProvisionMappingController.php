@@ -128,4 +128,85 @@ class ProvisionMappingController extends Controller
         session()->flash('success', $message);
         return response()->json(['message' => $message], 200);
     }
+
+    //FUNCTIONS FOR GMM 
+    public function createInsuranceGmm($provisionSettingId)
+    {
+        $organizationService      = new OrganizationService();
+        $isBoarding = $organizationService->isBoarding();
+        $provisionSetting         = $this->provisionSettingService->fetch($provisionSettingId);
+        $provisionMappingProducts = $this->provisionSettingService->fetchJsTable($provisionSettingId);
+        return view('user.provision_mapping.insurance_gmm.create', compact('provisionSetting', 'provisionMappingProducts','isBoarding'));
+    }
+
+    public function createFacultativeGmm($provisionSettingId)
+    {
+        $organizationService      = new OrganizationService();
+        $isBoarding = $organizationService->isBoarding();
+        $provisionSetting         = $this->provisionSettingService->fetch($provisionSettingId);
+        $provisionMappingProducts = $this->provisionSettingService->fetchJsReFacultativeTable($provisionSettingId);
+        return view('user.provision_mapping.re-insurance_gmm.facultative.create', compact('provisionSetting', 'provisionMappingProducts','isBoarding'));
+    }
+
+    public function createTreatyGmm($provisionSettingId)
+    {
+        $organizationService      = new OrganizationService();
+        $isBoarding = $organizationService->isBoarding();
+        $provisionSetting         = $this->provisionSettingService->fetch($provisionSettingId);
+        $provisionMappingProducts = $this->provisionSettingService->fetchJsReTreatyTable($provisionSettingId);
+        return view('user.provision_mapping.re-insurance_gmm.treaty.create', compact('provisionSetting', 'provisionMappingProducts','isBoarding'));
+    }
+     public function storeInsuranceGmm(Request $request, $provisionSetting)
+    {
+        $error = false;
+        $message = trans('user/provision_mapping.created', ['NAME' => $request->name]);
+        $request->validated();
+        try {
+            $this->provisionSettingService->createMapping($request, $provisionSetting);
+        } catch (\Exception $e) {
+            $error = true;
+            $message = $e->getMessage();
+            Log::error($e);
+        }
+        if ($error)
+            return response()->json(['message' => $message], 400);
+        session()->flash('success', $message);
+        return response()->json(['message' => $message], 200);
+    }
+
+    public function storeFacultativeGmm(Request $request, $provisionSetting)
+    {
+        $error = false;
+        $message = trans('user/provision_mapping.created', ['NAME' => $request->name]);
+        $request->validated();
+        try {
+            $this->provisionSettingService->createFacultativeMapping($request, $provisionSetting);
+        } catch (\Exception $e) {
+            $error = true;
+            $message = $e->getMessage();
+            Log::error($e);
+        }
+        if ($error)
+            return response()->json(['message' => $message], 400);
+        session()->flash('success', $message);
+        return response()->json(['message' => $message], 200);
+    }
+
+    public function storeTreatyGmm(Request $request, $provisionSetting)
+    {
+        $error = false;
+        $message = trans('user/provision_mapping.created', ['NAME' => $request->name]);
+        $request->validated();
+        try {
+            $this->provisionSettingService->createTreatyMapping($request, $provisionSetting);
+        } catch (\Exception $e) {
+            $error = true;
+            $message = $e->getMessage();
+            Log::error($e);
+        }
+        if ($error)
+            return response()->json(['message' => $message], 400);
+        session()->flash('success', $message);
+        return response()->json(['message' => $message], 200);
+    }
 }

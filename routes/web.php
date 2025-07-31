@@ -146,12 +146,30 @@ Route::group([
     Route::get('provision-mapping/{provision}/treaty', 'ProvisionMappingController@createTreaty')->name('provision.treaty.create');
     Route::post('provision-mapping/{provision}/treaty', 'ProvisionMappingController@storeTreaty')->name('provision.treaty.store');
 
+    //this for provision of insurance-gmm
+    Route::get('provision-mapping/{provision}/insurance-gmm', 'ProvisionMappingController@createInsuranceGmm')->name('provision.insurance_gmm.create');
+    Route::post('provision-mapping/{provision}/insurance-gmm', 'ProvisionMappingController@storeInsuranceGmm')->name('provision.insurance_gmm.store');
+
+    //this for provision of facultative-gmm
+    Route::get('provision-mapping/{provision}/facultative-gmm', 'ProvisionMappingController@createFacultativeGmm')->name('provision.facultative_gmm.create');
+    Route::post('provision-mapping/{provision}/facultative-gmm', 'ProvisionMappingController@storeFacultativeGmm')->name('provision.facultative_gmm.store');
+    //this for provision of treaty-gmm
+    Route::get('provision-mapping/{provision}/treaty-gmm', 'ProvisionMappingController@createTreatyGmm')->name('provision.treaty_gmm.create');
+    Route::post('provision-mapping/{provision}/treaty-gmm', 'ProvisionMappingController@storeTreatyGmm')->name('provision.treaty_gmm.store');
+
     Route::resource('provision-setting.expense-allocation', 'ExpenseAllocationController')->only(['create','store']);
 
     Route::resource('discount-rates', 'DiscountRateController');
 
     Route::post('discount-rates/{discount_rates}/status-update', 'DiscountRateController@statusUpdate')->name('discount.file.status');
     Route::resource('discount-rates.files', 'DiscountRateFileController');
+
+    //DISCOUNT RATES for GMM 
+    Route::resource('discount-rates', 'DiscountRateController');
+
+    Route::post('discount-rates/{discount_rates}/status-update', 'DiscountRateController@statusUpdate')->name('discount.file.status');
+    Route::resource('discount-rates.files', 'DiscountRateFileController');
+
 
     Route::resource('ibnr-assumptions', 'IbnrAssumptionController');
     Route::post('ibnr-assumptions/{ibnr_assumptions}/status-update', 'IbnrAssumptionController@statusUpdate')->name('ibnr.file.status');

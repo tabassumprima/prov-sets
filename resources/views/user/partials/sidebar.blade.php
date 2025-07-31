@@ -179,6 +179,14 @@
                     </span>
                 </a>
             </li>
+             <li class="{{ Request::is('discount-rates*') ? 'active' : '' }} nav-item">
+                <a class="d-flex align-items-center" href="{{ route('discount-rates.index') }}">
+                    <i data-feather="arrow-up-right"></i>
+                    <span class="menu-title text-truncate" >
+                       GMM Discount Rate 
+                    </span>
+                </a>
+            </li>
             @endauthorize
             @authorize('view-ibnr-assumption', true)
             <li class="{{ Request::is('ibnr-assumptions*') ? 'active' : '' }} nav-item">

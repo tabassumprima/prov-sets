@@ -1778,7 +1778,7 @@ input[type='number']::-webkit-inner-spin-button, input[type='number']::-webkit-o
   -ms-flex-pack : justify;
           justify-content : space-between;
   border-bottom : none;
-  padding : 1.5rem;
+  padding : 0.25rem;
   background-color : transparent;
 }
 
