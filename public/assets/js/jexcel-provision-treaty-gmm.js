@@ -36,7 +36,7 @@ $(document).ready(function() {
             },
             {
                 type: 'dropdown',
-                title: 'Discount Rates ',
+                title: 'Discount Rates (LIC) ',
                 width: 150,
                 source: discount_rates,
             },
@@ -55,7 +55,7 @@ $(document).ready(function() {
             },
             {
                 type: 'dropdown',
-                title: 'Risk Adjustments ',
+                title: 'Risk Adjustments (LIC)',
                 width: 150,
                 autocomplete: true,
                 source: risk_adjustments,

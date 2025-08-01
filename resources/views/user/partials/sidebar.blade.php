@@ -179,11 +179,13 @@
                     </span>
                 </a>
             </li>
-             <li class="{{ Request::is('discount-rates*') ? 'active' : '' }} nav-item">
-                <a class="d-flex align-items-center" href="{{ route('discount-rates.index') }}">
+            @endauthorize
+           @authorize('view-discount-rate-gmm', true)
+             <li class="{{ Request::is('gmm-discount-rates*') ? 'active' : '' }} nav-item">
+                <a class="d-flex align-items-center" href="{{ route('discount-rates-gmm.index') }}">
                     <i data-feather="arrow-up-right"></i>
                     <span class="menu-title text-truncate" >
-                       GMM Discount Rate 
+                       GMM Inputs
                     </span>
                 </a>
             </li>

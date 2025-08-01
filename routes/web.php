@@ -165,10 +165,11 @@ Route::group([
     Route::resource('discount-rates.files', 'DiscountRateFileController');
 
     //DISCOUNT RATES for GMM 
-    Route::resource('discount-rates', 'DiscountRateController');
+Route::get('gmm-discount-rates', [App\Http\Controllers\User\DiscountRateController::class, 'indexgmm'])->name('discount-rates-gmm.index');
+Route::get('gmm-discount-rates-files', [App\Http\Controllers\User\DiscountRateFileController::class, 'indexFile'])->name('user.discount_rates_gmm.files.index');
 
     Route::post('discount-rates/{discount_rates}/status-update', 'DiscountRateController@statusUpdate')->name('discount.file.status');
-    Route::resource('discount-rates.files', 'DiscountRateFileController');
+    Route::resource('discount-rates-gmm.files', 'DiscountRateFileController');
 
 
     Route::resource('ibnr-assumptions', 'IbnrAssumptionController');

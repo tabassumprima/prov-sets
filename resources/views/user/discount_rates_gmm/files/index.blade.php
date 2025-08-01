@@ -15,7 +15,7 @@
                                 <li class="breadcrumb-item"><a href="{{ route('user.dashboard') }}">Dashboard</a>
                                 </li>
                                 <li class="breadcrumb-item">Actuarial Assumption</li>
-                                <li class="breadcrumb-item"><a href="{{ route('discount-rates.index') }}">Discount rate</a>
+                                <li class="breadcrumb-item"><a href="{{ route('discount-rates.index') }}">GMM Inputs</a>
                                 </li>
                             </ol>
                         </div>
@@ -39,7 +39,7 @@
                             <div class="card-header">
                                 <div class="row w-100">
                                     <div class="col-md-6 text-left">
-                                        <h2>Discount Rate File Detail</h2>
+                                        <h2>GMM Inputs</h2>
                                     </div>
                                     @authorize('create-discount-rate-file', true)
                                     <div class="col-md-6 text-right">
@@ -65,53 +65,56 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                        @foreach($discount_rate->files as  $file)
                                             <tr>
-                                                <td>
-                                                    {{ $loop->iteration}}
-                                                </td>
-                                                <td><span class="font-weight-bold">{{ $file->name }}</span></td>
-                                                <td>
-                                                    <a href="{{route('discount_rate.file', CustomHelper::encode($file->id))}}">{{$file->path}}</a>
-                                                </td>
-                                                <td>
-                                                    {{ $file->valuation_date }}
-                                                </td>
-                                                <td>
-                                                    {{ $file->created_at }}
-                                                </td>
+                                                <td>1</td>
+                                                <td><span class="font-weight-bold">GMM Inputs for year end 2022</span></td>
+                                                <td><a href="{{route('discount_rate.file', CustomHelper::encode(1))}}">{{'GMM Inputs 2022_1752133049.csv'}}</a></td>
+                                                <td>2024-12-31</td>
+                                                <td>2025-01-01</td>
                                                 <td>
                                                     <div class="dropdown">
-                                                        <button type="button"
-                                                            class="btn btn-sm dropdown-toggle hide-arrow"
-                                                            data-toggle="dropdown">
+                                                        <button type="button" class="btn btn-sm dropdown-toggle hide-arrow" data-toggle="dropdown">
                                                             <i data-feather="more-vertical"></i>
                                                         </button>
                                                         <div class="dropdown-menu">
-                                                            @authorize('update-discount-rate-file', true)
-                                                            <a class="dropdown-item" href="{{ route('discount-rates.files.edit', ['discount_rate' => CustomHelper::encode($discount_rate->id), 'file' => CustomHelper::encode($file->id)])}}">
+                                                            <a class="dropdown-item" href="#">
                                                                 <i data-feather="edit-2" class="mr-50"></i>
                                                                 <span>Edit</span>
                                                             </a>
-                                                            @endauthorize
-                                                            @authorize('delete-discount-rate-file', true)
-                                                            <a class="dropdown-item delete" data-route="{{ route('discount-rates.files.destroy', ['discount_rate' => CustomHelper::encode($discount_rate->id), 'file' => CustomHelper::encode($file->id)])}}">
+                                                            <a class="dropdown-item delete" href="#">
                                                                 <i data-feather="trash" class="mr-50"></i>
                                                                 <span>Delete</span>
                                                             </a>
-                                                            @endauthorize
-                                                            @authorize('download-discount-rate-file', true)
-                                                            <a class="dropdown-item" href="{{route('discount_rate.file', CustomHelper::encode($file->id))}}">
-                                                                <i data-feather="download" class="mr-50"></i>
-                                                                <span>Download</span>
-                                                            </a>
-                                                            @endauthorize
                                                         </div>
                                                     </div>
                                                 </td>
-
                                             </tr>
-                                            @endforeach
+
+                                            <tr>
+                                                <td>2</td>
+                                                <td><span class="font-weight-bold">GMM Inputs for year end 2023</span></td>
+                                                 <td><a href="{{route('discount_rate.file', CustomHelper::encode(1))}}">{{'GMM Inputs 2023_1752133049.csv'}}</a></td>
+                                                <td>2024-11-30</td>
+                                                <td>2025-01-02</td>
+                                                <td>
+                                                    <div class="dropdown">
+                                                        <button type="button" class="btn btn-sm dropdown-toggle hide-arrow" data-toggle="dropdown">
+                                                            <i data-feather="more-vertical"></i>
+                                                        </button>
+                                                        <div class="dropdown-menu">
+                                                            <a class="dropdown-item" href="#">
+                                                                <i data-feather="edit-2" class="mr-50"></i>
+                                                                <span>Edit</span>
+                                                            </a>
+                                                            <a class="dropdown-item delete" href="#">
+                                                                <i data-feather="trash" class="mr-50"></i>
+                                                                <span>Delete</span>
+                                                            </a>
+
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
                                         </tbody>
                                     </table>
                                 </div>
@@ -123,37 +126,7 @@
                 </div>
                 <!-- Modal to add new user starts-->
                 <div class="modal modal-slide-in new-user-modal fade" id="modals-slide-in">
-                    <div class="modal-dialog">
-                        <form class="add-new-user modal-content pt-0" enctype="multipart/form-data" action="{{ route('discount-rates.files.store', ['discount_rate' => CustomHelper::encode($discount_rate->id)]) }}" method='post'>
-                            @csrf
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">×</button>
-                            <div class="modal-header mb-1">
-                                <h5 class="modal-title">Upload new Discount Rate</h5>
-                            </div>
-                            <div class="modal-body flex-grow-1">
-                                <div class="form-group">
-                                    <label for="name" class="required">Name</label>
-                                    <input type="text" class="form-control" placeholder="Name"
-                                             name="name" id="name" />
-                                </div>
-                                <div class="form-group">
-                                    <label for="discount_csv">Choose File</label>
-                                    <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="discount_csv" name="discount_file">
-                                        <label class="custom-file-label" for="discount_csv">Choose file</label>
-                                    </div>
-                                </div>
-                                <div class="form-group position-relative">
-                                    <label class="form-label" for="valuation_date">Valuation date</label>
-                                    <input type="text" id="valuation_date" name="valuation_date" class="form-control datepicker"
-                                        placeholder="31 Dec, 2021" />
-                                </div>
-                                <button type="submit" class="btn btn-primary mr-1 data-submit">Upload</button>
-                                <button type="reset" class="btn btn-outline-secondary"
-                                    data-dismiss="modal">Cancel</button>
-                            </div>
-                        </form>
-                    </div>
+                 
                 </div>
                 <!-- Modal to add new user Ends-->
                 <!-- Modal -->

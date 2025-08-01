@@ -35,6 +35,11 @@ class DiscountRateFileController extends Controller
         $discount_rate = $this->discountRateService->fetchWithRelations($discount_rate_id, ['files']);
         return view("user.discount_rates.files.index", compact("discount_rate"));
     }
+     public function indexFile()
+    {
+        $this->authorizePermission('view-discount-rate-file-gmm');
+        return view("user.discount_rates_gmm.files.index");
+    }
 
     /**
      * Show the form for creating a new resource.

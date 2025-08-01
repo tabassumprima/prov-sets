@@ -34,7 +34,7 @@
                             <div class="card-header">
                                 <div class="row w-100">
                                     <div class="col-md-6 text-left">
-                                        <h2>Discount Rate</h2>
+                                        <h2>GMM Inputs</h2>
                                     </div>
                                     @authorize('create-discount-rate', true)
                                     <div class="col-md-6 text-right">
@@ -58,57 +58,29 @@
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
-                                            @foreach ($discountRates as $discountRate)
-                                            <tr>
-                                                <td>
-                                                    {{ $loop->iteration }}
-                                                </td>
-                                                <td>
-                                                    @can('view-discount-rate-file', true)
-                                                    <a href="{{ route('discount-rates.files.index', ['discount_rate' => CustomHelper::encode($discountRate->id)]) }}">{{ $discountRate->name }}</a>
-                                                    @else
-                                                    {{ $discountRate->name }}
-                                                    @endcan
-                                                </td>
-                                                <td>{{ $discountRate->files_count }}</td>
-                                                <td>{{ $discountRate->description }}</td>
-                                                <td>{{ $discountRate->updated_at }}</td>
-                                                <td>
-                                                    <div class="dropdown">
-                                                        <button type="button"
-                                                            class="btn btn-sm dropdown-toggle hide-arrow"
-                                                            data-toggle="dropdown">
-                                                            <i data-feather="more-vertical"></i>
-                                                        </button>
-
-                                                        <div class="dropdown-menu">
-                                                            @if($isboarding)
-                                                            <a class="dropdown-item" href="{{ route('discount-rates.edit', ['discount_rate' => CustomHelper::encode($discountRate->id)]) }}">
-                                                                <i data-feather="edit-2" class="mr-50"></i>
-                                                                <span>Edit</span>
-                                                            </a>
-                                                            <a class="dropdown-item delete" data-route="{{ route('discount-rates.destroy', ['discount_rate' => CustomHelper::encode($discountRate->id)]) }}">
-                                                                <i data-feather="trash" class="mr-50"></i>
-                                                                <span>Delete</span>
-                                                            </a>
-                                                            @endif
-                                                            @authorize('update-status-discount-rate', true)
-                                                            <a class="dropdown-item update-file"
-                                                                id="update_file:{{ CustomHelper::encode($discountRate->id) }}"
-                                                                data-status="{{ $discountRate->status->slug }}"
-                                                                style="cursor: pointer; display: flex; align-items: center; gap: 5px;">
-                                                                <i data-feather="{{ $discountRate->status->slug == 'started' ? 'eye-off' : 'eye' }}" class="mr-50"></i>
-                                                                <span>{{ $discountRate->status->slug == 'started' ? 'Disable' : 'Enable' }}</span>
-                                                            </a>
-
-                                                            @endauthorize
-                                                        </div>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>
+                                                <a href="{{ route('user.discount_rates_gmm.files.index') }}">GMM Inputs IFRS 17</a>  
+                                            </td>
+                                            <td>2</td>
+                                            <td>GMM Inputs for IFRS 17</td>
+                                            <td>2023-07-31</td>
+                                            <td>
+                                                <div class="dropdown">
+                                                    <button type="button" class="btn btn-sm dropdown-toggle hide-arrow" data-toggle="dropdown">
+                                                        <i data-feather="more-vertical"></i>
+                                                    </button>
+                                                    <div class="dropdown-menu">
+                                                        <a class="dropdown-item" href="#"><i data-feather="edit-2" class="mr-50"></i> <span>Edit</span></a>
+                                                        <a class="dropdown-item delete" href="#"><i data-feather="trash" class="mr-50"></i> <span>Delete</span></a>
+                                                        <a class="dropdown-item update-file" href="#"><i data-feather="eye" class="mr-50"></i> <span>Disable</span></a>
                                                     </div>
-                                                </td>
-                                            </tr>
-                                            @endforeach
-                                        </tbody>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
                                     </table>
                                 </div>
 

@@ -39,7 +39,14 @@ class DiscountRateController extends Controller
         $discountRates = $this->discountRateService->fetchAllWithStatus();
         return view("user.discount_rates.index", compact('discountRates','isboarding'));
     }
-
+public function indexgmm()
+    {
+        $this->authorizePermission('view-discount-rate-gmm');
+        $organizationService = new OrganizationService();
+        $isboarding = $organizationService->isBoarding();
+        $discountRates = $this->discountRateService->fetchAllWithStatus();
+        return view("user.discount_rates_gmm.index", compact('discountRates','isboarding'));
+    }
     /**
      * Show the form for creating a new resource.
      *
