@@ -1,15 +1,482 @@
 $(document).ready(function() {
-    var data = $('#spreadsheet').data('department');
-    var ibnr = $('#ibnr').data('ibnr');
-    var portfolio = $('#portfolio').data('portfolio');
-    var discount_rates = $('#discount_rates').data('discount_rates');
-    var risk_adjustments = $('#risk_adjustments').data('risk_adjustments');
-    var claim_patterns = $('#claim_patterns').data('claim_patterns');
-    var route = $('#route').data('route');
-    var token = $('#route').data('token');
+    // Hardcoded data with 5 rows
+    var data = [
+        {
+            'GMM Product Code': 'E01001',
+            'Description': 'Erection All Risk Insurance (EAR)',
+            'System Department': 'miscellaneous',
+            'Discount Rates (LIC)': 'discount rate curve for IFRS 17',
+            'Discount Rates (LRC)': 'discount rate curve for IFRS 17',
+            'IBNR': 'CDF for Misc Conventional',
+            'Risk Adjustments (LIC)': 'Risk adjustment loadings for Misc',
+            'Risk Adjustments (LRC)': 'Risk adjustment loadings for Misc',
+            'GMM Inputs': 'GMM Input file',
+            'Claim Patterns': 'Claim pattern for Misc',
+        },
+        {
+            'GMM Product Code': 'E01002',
+   'Description': 'Contractors All Risk Insurance (CAR)',
+            'System Department': 'Engineering',
+            'Discount Rates (LIC)': 'discount rate curve for IFRS 17',
+            'Discount Rates (LRC)': 'discount rate curve for IFRS 17',
+            'IBNR': 'CDF for Misc Conventional',
+            'Risk Adjustments (LIC)': 'Risk adjustment loadings for Misc',
+            'Risk Adjustments (LRC)': 'Risk adjustment loadings for Misc',
+            'GMM Inputs': 'GMM Input file',
+            'Claim Patterns': 'Claim pattern for Misc',
+        },
+         {
+            'GMM Product Code': 'X01002',
+            'Description': 'Performance Bond',
+            'System Department': 'miscellaneous',
+            'Discount Rates (LIC)': 'discount rate curve for IFRS 17',
+            'Discount Rates (LRC)': 'discount rate curve for IFRS 17',
+            'IBNR': 'CDF for Misc Conventional',
+            'Risk Adjustments (LIC)': 'Risk adjustment loadings for Misc',
+            'Risk Adjustments (LRC)': 'Risk adjustment loadings for Misc',
+            'GMM Inputs': 'GMM Input file',
+            'Claim Patterns': 'Claim pattern for Misc',
+        },
+        {
+            'GMM Product Code': 'X01003',
+            'Description': 'Mobilization Advance Bond',
+            'System Department': 'miscellaneous',
+            'Discount Rates (LIC)': 'discount rate curve for IFRS 17',
+            'Discount Rates (LRC)': 'discount rate curve for IFRS 17',
+            'IBNR': 'CDF for Misc Conventional',
+            'Risk Adjustments (LIC)': 'Risk adjustment loadings for Misc',
+            'Risk Adjustments (LRC)': 'Risk adjustment loadings for Misc',
+            'GMM Inputs': 'GMM Input file',
+            'Claim Patterns': 'Claim pattern for Misc',
+        },
+        {
+            'GMM Product Code': 'X01005',
+            'Description': 'Custom Bond',
+            'System Department': 'miscellaneous',
+           'Discount Rates (LIC)': 'discount rate curve for IFRS 17',
+            'Discount Rates (LRC)': 'discount rate curve for IFRS 17',
+            'IBNR': 'CDF for Misc Conventional',
+            'Risk Adjustments (LIC)': 'Risk adjustment loadings for Misc',
+            'Risk Adjustments (LRC)': 'Risk adjustment loadings for Misc',
+            'GMM Inputs': 'GMM Input file',
+            'Claim Patterns': 'Claim pattern for Misc',
+        },
+        {
+            'GMM Product Code': 'X01005',
+            'Description': 'Custom Bond',
+            'System Department': 'miscellaneous',
+            'Discount Rates (LIC)': 'discount rate curve for IFRS 17',
+            'Discount Rates (LRC)': 'discount rate curve for IFRS 17',
+            'IBNR': 'CDF for Misc Conventional',
+            'Risk Adjustments (LIC)': 'Risk adjustment loadings for Misc',
+            'Risk Adjustments (LRC)': 'Risk adjustment loadings for Misc',
+            'GMM Inputs': 'GMM Input file',
+            'Claim Patterns': 'Claim pattern for Misc',
+        },
+        {
+            'GMM Product Code': 'X01006',
+            'Description': 'Retention Money Bond',
+            'System Department': 'miscellaneous',
+            'Discount Rates (LIC)': 'discount rate curve for IFRS 17',
+            'Discount Rates (LRC)': 'discount rate curve for IFRS 17',
+            'IBNR': 'CDF for Misc Conventional',
+            'Risk Adjustments (LIC)': 'Risk adjustment loadings for Misc',
+            'Risk Adjustments (LRC)': 'Risk adjustment loadings for Misc',
+            'GMM Inputs': 'GMM Input file',
+            'Claim Patterns': 'Claim pattern for Misc',
+        },
+          {
+            'GMM Product Code': 'E01501',
+            'Description': 'Erection All Risk Takaful (EAR)',
+            'System Department': 'Engineering',
+            'Discount Rates (LIC)': 'discount rate curve for IFRS 17',
+            'Discount Rates (LRC)': 'discount rate curve for IFRS 17',
+            'IBNR': 'CDF for Misc Takaful',
+            'Risk Adjustments (LIC)': 'Risk adjustment loadings for Misc',
+            'Risk Adjustments (LRC)': 'Risk adjustment loadings for Misc',
+            'GMM Inputs': 'GMM Input file',
+            'Claim Patterns': 'Claim pattern for Misc',
+        },  {
+            'GMM Product Code': 'E01502',
+            'Description': 'Contractors All Risk Takaful (CAR)',
+            'System Department': 'Engineering',
+            'Discount Rates (LIC)': 'discount rate curve for IFRS 17',
+            'Discount Rates (LRC)': 'discount rate curve for IFRS 17',
+            'IBNR': 'CDF for Misc Takaful',
+            'Risk Adjustments (LIC)': 'Risk adjustment loadings for Misc',
+            'Risk Adjustments (LRC)': 'Risk adjustment loadings for Misc',
+            'GMM Inputs': 'GMM Input file',
+            'Claim Patterns': 'Claim pattern for Misc',
+            
+        },
+         {
+            'GMM Product Code': 'X01005',
+            'Description': 'Custom Bond',
+            'System Department': 'miscellaneous',
+            'Discount Rates (LIC)': 'discount rate curve for IFRS 17',
+            'Discount Rates (LRC)': 'discount rate curve for IFRS 17',
+            'IBNR': 'CDF for Misc Conventional',
+            'Risk Adjustments (LIC)': 'Risk adjustment loadings for Misc',
+            'Risk Adjustments (LRC)': 'Risk adjustment loadings for Misc',
+            'GMM Inputs': 'GMM Input file',
+            'Claim Patterns': 'Claim pattern for Misc',
+        },
+        {
+            'GMM Product Code': 'X01006',
+            'Description': 'Retention Money Bond',
+            'System Department': 'miscellaneous',
+            'Discount Rates (LIC)': 'discount rate curve for IFRS 17',
+            'Discount Rates (LRC)': 'discount rate curve for IFRS 17',
+            'IBNR': 'CDF for Misc Conventional',
+            'Risk Adjustments (LIC)': 'Risk adjustment loadings for Misc',
+            'Risk Adjustments (LRC)': 'Risk adjustment loadings for Misc',
+            'GMM Inputs': 'GMM Input file',
+            'Claim Patterns': 'Claim pattern for Misc',
+        },
+          {
+            'GMM Product Code': 'E01501',
+            'Description': 'Erection All Risk Takaful (EAR)',
+            'System Department': 'Engineering',
+            'Discount Rates (LIC)': 'discount rate curve for IFRS 17',
+            'Discount Rates (LRC)': 'discount rate curve for IFRS 17',
+            'IBNR': 'CDF for Misc Takaful',
+            'Risk Adjustments (LIC)': 'Risk adjustment loadings for Misc',
+            'Risk Adjustments (LRC)': 'Risk adjustment loadings for Misc',
+            'GMM Inputs': 'GMM Input file',
+            'Claim Patterns': 'Claim pattern for Misc',
+        },  {
+            'GMM Product Code': 'E01502',
+            'Description': 'Contractors All Risk Takaful (CAR)',
+            'System Department': 'Engineering',
+            'Discount Rates (LIC)': 'discount rate curve for IFRS 17',
+            'Discount Rates (LRC)': 'discount rate curve for IFRS 17',
+            'IBNR': 'CDF for Misc Takaful',
+            'Risk Adjustments (LIC)': 'Risk adjustment loadings for Misc',
+            'Risk Adjustments (LRC)': 'Risk adjustment loadings for Misc',
+            'GMM Inputs': 'GMM Input file',
+            'Claim Patterns': 'Claim pattern for Misc',
+            
+        },
+        {
+            'GMM Product Code': 'X01005',
+            'Description': 'Custom Bond',
+            'System Department': 'miscellaneous',
+           'Discount Rates (LIC)': 'discount rate curve for IFRS 17',
+            'Discount Rates (LRC)': 'discount rate curve for IFRS 17',
+            'IBNR': 'CDF for Misc Conventional',
+            'Risk Adjustments (LIC)': 'Risk adjustment loadings for Misc',
+            'Risk Adjustments (LRC)': 'Risk adjustment loadings for Misc',
+            'GMM Inputs': 'GMM Input file',
+            'Claim Patterns': 'Claim pattern for Misc',
+        },
+        {
+            'GMM Product Code': 'X01005',
+            'Description': 'Custom Bond',
+            'System Department': 'miscellaneous',
+            'Discount Rates (LIC)': 'discount rate curve for IFRS 17',
+            'Discount Rates (LRC)': 'discount rate curve for IFRS 17',
+            'IBNR': 'CDF for Misc Conventional',
+            'Risk Adjustments (LIC)': 'Risk adjustment loadings for Misc',
+            'Risk Adjustments (LRC)': 'Risk adjustment loadings for Misc',
+            'GMM Inputs': 'GMM Input file',
+            'Claim Patterns': 'Claim pattern for Misc',
+        },
+        {
+            'GMM Product Code': 'X01006',
+            'Description': 'Retention Money Bond',
+            'System Department': 'miscellaneous',
+            'Discount Rates (LIC)': 'discount rate curve for IFRS 17',
+            'Discount Rates (LRC)': 'discount rate curve for IFRS 17',
+            'IBNR': 'CDF for Misc Conventional',
+            'Risk Adjustments (LIC)': 'Risk adjustment loadings for Misc',
+            'Risk Adjustments (LRC)': 'Risk adjustment loadings for Misc',
+            'GMM Inputs': 'GMM Input file',
+            'Claim Patterns': 'Claim pattern for Misc',
+        },
+        {
+            'GMM Product Code': 'E01502',
+            'Description': 'Contractors All Risk Takaful (CAR)',
+            'System Department': 'Engineering',
+            'Discount Rates (LIC)': 'discount rate curve for IFRS 17',
+            'Discount Rates (LRC)': 'discount rate curve for IFRS 17',
+            'IBNR': 'CDF for Misc Takaful',
+            'Risk Adjustments (LIC)': 'Risk adjustment loadings for Misc',
+            'Risk Adjustments (LRC)': 'Risk adjustment loadings for Misc',
+            'GMM Inputs': 'GMM Input file',
+            'Claim Patterns': 'Claim pattern for Misc',
+            
+        },
+         {
+            'GMM Product Code': 'X01005',
+            'Description': 'Custom Bond',
+            'System Department': 'miscellaneous',
+            'Discount Rates (LIC)': 'discount rate curve for IFRS 17',
+            'Discount Rates (LRC)': 'discount rate curve for IFRS 17',
+            'IBNR': 'CDF for Misc Conventional',
+            'Risk Adjustments (LIC)': 'Risk adjustment loadings for Misc',
+            'Risk Adjustments (LRC)': 'Risk adjustment loadings for Misc',
+            'GMM Inputs': 'GMM Input file',
+            'Claim Patterns': 'Claim pattern for Misc',
+        },
+        {
+            'GMM Product Code': 'X01006',
+            'Description': 'Retention Money Bond',
+            'System Department': 'miscellaneous',
+            'Discount Rates (LIC)': 'discount rate curve for IFRS 17',
+            'Discount Rates (LRC)': 'discount rate curve for IFRS 17',
+            'IBNR': 'CDF for Misc Conventional',
+            'Risk Adjustments (LIC)': 'Risk adjustment loadings for Misc',
+            'Risk Adjustments (LRC)': 'Risk adjustment loadings for Misc',
+            'GMM Inputs': 'GMM Input file',
+            'Claim Patterns': 'Claim pattern for Misc',
+        },
+             {
+            'GMM Product Code': 'E01001',
+            'Description': 'Erection All Risk Insurance (EAR)',
+            'System Department': 'miscellaneous',
+            'Discount Rates (LIC)': 'discount rate curve for IFRS 17',
+            'Discount Rates (LRC)': 'discount rate curve for IFRS 17',
+            'IBNR': 'CDF for Misc Conventional',
+            'Risk Adjustments (LIC)': 'Risk adjustment loadings for Misc',
+            'Risk Adjustments (LRC)': 'Risk adjustment loadings for Misc',
+            'GMM Inputs': 'GMM Input file',
+            'Claim Patterns': 'Claim pattern for Misc',
+        },
+        {
+            'GMM Product Code': 'E01002',
+   'Description': 'Contractors All Risk Insurance (CAR)',
+            'System Department': 'Engineering',
+            'Discount Rates (LIC)': 'discount rate curve for IFRS 17',
+            'Discount Rates (LRC)': 'discount rate curve for IFRS 17',
+            'IBNR': 'CDF for Misc Conventional',
+            'Risk Adjustments (LIC)': 'Risk adjustment loadings for Misc',
+            'Risk Adjustments (LRC)': 'Risk adjustment loadings for Misc',
+            'GMM Inputs': 'GMM Input file',
+            'Claim Patterns': 'Claim pattern for Misc',
+        },
+         {
+            'GMM Product Code': 'X01002',
+            'Description': 'Performance Bond',
+            'System Department': 'miscellaneous',
+            'Discount Rates (LIC)': 'discount rate curve for IFRS 17',
+            'Discount Rates (LRC)': 'discount rate curve for IFRS 17',
+            'IBNR': 'CDF for Misc Conventional',
+            'Risk Adjustments (LIC)': 'Risk adjustment loadings for Misc',
+            'Risk Adjustments (LRC)': 'Risk adjustment loadings for Misc',
+            'GMM Inputs': 'GMM Input file',
+            'Claim Patterns': 'Claim pattern for Misc',
+        },
+        {
+            'GMM Product Code': 'X01003',
+            'Description': 'Mobilization Advance Bond',
+            'System Department': 'miscellaneous',
+            'Discount Rates (LIC)': 'discount rate curve for IFRS 17',
+            'Discount Rates (LRC)': 'discount rate curve for IFRS 17',
+            'IBNR': 'CDF for Misc Conventional',
+            'Risk Adjustments (LIC)': 'Risk adjustment loadings for Misc',
+            'Risk Adjustments (LRC)': 'Risk adjustment loadings for Misc',
+            'GMM Inputs': 'GMM Input file',
+            'Claim Patterns': 'Claim pattern for Misc',
+        },
+        {
+            'GMM Product Code': 'X01005',
+            'Description': 'Custom Bond',
+            'System Department': 'miscellaneous',
+           'Discount Rates (LIC)': 'discount rate curve for IFRS 17',
+            'Discount Rates (LRC)': 'discount rate curve for IFRS 17',
+            'IBNR': 'CDF for Misc Conventional',
+            'Risk Adjustments (LIC)': 'Risk adjustment loadings for Misc',
+            'Risk Adjustments (LRC)': 'Risk adjustment loadings for Misc',
+            'GMM Inputs': 'GMM Input file',
+            'Claim Patterns': 'Claim pattern for Misc',
+        },
+        {
+            'GMM Product Code': 'X01005',
+            'Description': 'Custom Bond',
+            'System Department': 'miscellaneous',
+            'Discount Rates (LIC)': 'discount rate curve for IFRS 17',
+            'Discount Rates (LRC)': 'discount rate curve for IFRS 17',
+            'IBNR': 'CDF for Misc Conventional',
+            'Risk Adjustments (LIC)': 'Risk adjustment loadings for Misc',
+            'Risk Adjustments (LRC)': 'Risk adjustment loadings for Misc',
+            'GMM Inputs': 'GMM Input file',
+            'Claim Patterns': 'Claim pattern for Misc',
+        },
+        {
+            'GMM Product Code': 'X01006',
+            'Description': 'Retention Money Bond',
+            'System Department': 'miscellaneous',
+            'Discount Rates (LIC)': 'discount rate curve for IFRS 17',
+            'Discount Rates (LRC)': 'discount rate curve for IFRS 17',
+            'IBNR': 'CDF for Misc Conventional',
+            'Risk Adjustments (LIC)': 'Risk adjustment loadings for Misc',
+            'Risk Adjustments (LRC)': 'Risk adjustment loadings for Misc',
+            'GMM Inputs': 'GMM Input file',
+            'Claim Patterns': 'Claim pattern for Misc',
+        },
+          {
+            'GMM Product Code': 'E01501',
+            'Description': 'Erection All Risk Takaful (EAR)',
+            'System Department': 'Engineering',
+            'Discount Rates (LIC)': 'discount rate curve for IFRS 17',
+            'Discount Rates (LRC)': 'discount rate curve for IFRS 17',
+            'IBNR': 'CDF for Misc Takaful',
+            'Risk Adjustments (LIC)': 'Risk adjustment loadings for Misc',
+            'Risk Adjustments (LRC)': 'Risk adjustment loadings for Misc',
+            'GMM Inputs': 'GMM Input file',
+            'Claim Patterns': 'Claim pattern for Misc',
+        },  {
+            'GMM Product Code': 'E01502',
+            'Description': 'Contractors All Risk Takaful (CAR)',
+            'System Department': 'Engineering',
+            'Discount Rates (LIC)': 'discount rate curve for IFRS 17',
+            'Discount Rates (LRC)': 'discount rate curve for IFRS 17',
+            'IBNR': 'CDF for Misc Takaful',
+            'Risk Adjustments (LIC)': 'Risk adjustment loadings for Misc',
+            'Risk Adjustments (LRC)': 'Risk adjustment loadings for Misc',
+            'GMM Inputs': 'GMM Input file',
+            'Claim Patterns': 'Claim pattern for Misc',
+            
+        },
+         {
+            'GMM Product Code': 'X01005',
+            'Description': 'Custom Bond',
+            'System Department': 'miscellaneous',
+            'Discount Rates (LIC)': 'discount rate curve for IFRS 17',
+            'Discount Rates (LRC)': 'discount rate curve for IFRS 17',
+            'IBNR': 'CDF for Misc Conventional',
+            'Risk Adjustments (LIC)': 'Risk adjustment loadings for Misc',
+            'Risk Adjustments (LRC)': 'Risk adjustment loadings for Misc',
+            'GMM Inputs': 'GMM Input file',
+            'Claim Patterns': 'Claim pattern for Misc',
+        },
+        {
+            'GMM Product Code': 'X01006',
+            'Description': 'Retention Money Bond',
+            'System Department': 'miscellaneous',
+            'Discount Rates (LIC)': 'discount rate curve for IFRS 17',
+            'Discount Rates (LRC)': 'discount rate curve for IFRS 17',
+            'IBNR': 'CDF for Misc Conventional',
+            'Risk Adjustments (LIC)': 'Risk adjustment loadings for Misc',
+            'Risk Adjustments (LRC)': 'Risk adjustment loadings for Misc',
+            'GMM Inputs': 'GMM Input file',
+            'Claim Patterns': 'Claim pattern for Misc',
+        },
+          {
+            'GMM Product Code': 'E01501',
+            'Description': 'Erection All Risk Takaful (EAR)',
+            'System Department': 'Engineering',
+            'Discount Rates (LIC)': 'discount rate curve for IFRS 17',
+            'Discount Rates (LRC)': 'discount rate curve for IFRS 17',
+            'IBNR': 'CDF for Misc Takaful',
+            'Risk Adjustments (LIC)': 'Risk adjustment loadings for Misc',
+            'Risk Adjustments (LRC)': 'Risk adjustment loadings for Misc',
+            'GMM Inputs': 'GMM Input file',
+            'Claim Patterns': 'Claim pattern for Misc',
+        },  {
+            'GMM Product Code': 'E01502',
+            'Description': 'Contractors All Risk Takaful (CAR)',
+            'System Department': 'Engineering',
+            'Discount Rates (LIC)': 'discount rate curve for IFRS 17',
+            'Discount Rates (LRC)': 'discount rate curve for IFRS 17',
+            'IBNR': 'CDF for Misc Takaful',
+            'Risk Adjustments (LIC)': 'Risk adjustment loadings for Misc',
+            'Risk Adjustments (LRC)': 'Risk adjustment loadings for Misc',
+            'GMM Inputs': 'GMM Input file',
+            'Claim Patterns': 'Claim pattern for Misc',
+            
+        },
+        {
+            'GMM Product Code': 'X01005',
+            'Description': 'Custom Bond',
+            'System Department': 'miscellaneous',
+           'Discount Rates (LIC)': 'discount rate curve for IFRS 17',
+            'Discount Rates (LRC)': 'discount rate curve for IFRS 17',
+            'IBNR': 'CDF for Misc Conventional',
+            'Risk Adjustments (LIC)': 'Risk adjustment loadings for Misc',
+            'Risk Adjustments (LRC)': 'Risk adjustment loadings for Misc',
+            'GMM Inputs': 'GMM Input file',
+            'Claim Patterns': 'Claim pattern for Misc',
+        },
+        {
+            'GMM Product Code': 'X01005',
+            'Description': 'Custom Bond',
+            'System Department': 'miscellaneous',
+            'Discount Rates (LIC)': 'discount rate curve for IFRS 17',
+            'Discount Rates (LRC)': 'discount rate curve for IFRS 17',
+            'IBNR': 'CDF for Misc Conventional',
+            'Risk Adjustments (LIC)': 'Risk adjustment loadings for Misc',
+            'Risk Adjustments (LRC)': 'Risk adjustment loadings for Misc',
+            'GMM Inputs': 'GMM Input file',
+            'Claim Patterns': 'Claim pattern for Misc',
+        },
+        {
+            'GMM Product Code': 'X01006',
+            'Description': 'Retention Money Bond',
+            'System Department': 'miscellaneous',
+            'Discount Rates (LIC)': 'discount rate curve for IFRS 17',
+            'Discount Rates (LRC)': 'discount rate curve for IFRS 17',
+            'IBNR': 'CDF for Misc Conventional',
+            'Risk Adjustments (LIC)': 'Risk adjustment loadings for Misc',
+            'Risk Adjustments (LRC)': 'Risk adjustment loadings for Misc',
+            'GMM Inputs': 'GMM Input file',
+            'Claim Patterns': 'Claim pattern for Misc',
+        },
+        {
+            'GMM Product Code': 'E01502',
+            'Description': 'Contractors All Risk Takaful (CAR)',
+            'System Department': 'Engineering',
+            'Discount Rates (LIC)': 'discount rate curve for IFRS 17',
+            'Discount Rates (LRC)': 'discount rate curve for IFRS 17',
+            'IBNR': 'CDF for Misc Takaful',
+            'Risk Adjustments (LIC)': 'Risk adjustment loadings for Misc',
+            'Risk Adjustments (LRC)': 'Risk adjustment loadings for Misc',
+            'GMM Inputs': 'GMM Input file',
+            'Claim Patterns': 'Claim pattern for Misc',
+            
+        },
+         {
+            'GMM Product Code': 'X01005',
+            'Description': 'Custom Bond',
+            'System Department': 'miscellaneous',
+            'Discount Rates (LIC)': 'discount rate curve for IFRS 17',
+            'Discount Rates (LRC)': 'discount rate curve for IFRS 17',
+            'IBNR': 'CDF for Misc Conventional',
+            'Risk Adjustments (LIC)': 'Risk adjustment loadings for Misc',
+            'Risk Adjustments (LRC)': 'Risk adjustment loadings for Misc',
+            'GMM Inputs': 'GMM Input file',
+            'Claim Patterns': 'Claim pattern for Misc',
+        },
+        {
+            'GMM Product Code': 'X01006',
+            'Description': 'Retention Money Bond',
+            'System Department': 'miscellaneous',
+            'Discount Rates (LIC)': 'discount rate curve for IFRS 17',
+            'Discount Rates (LRC)': 'discount rate curve for IFRS 17',
+            'IBNR': 'CDF for Misc Conventional',
+            'Risk Adjustments (LIC)': 'Risk adjustment loadings for Misc',
+            'Risk Adjustments (LRC)': 'Risk adjustment loadings for Misc',
+            'GMM Inputs': 'GMM Input file',
+            'Claim Patterns': 'Claim pattern for Misc',
+        },
+    ];
+    
+    // Hardcoded dropdown options
+    var ibnr = ['CDF for Misc Conventional', 'CDF for Fire Conventional', 'CDF for Health Conventional','CDF for Misc Takaful'];
+    var discount_rates = ['discount rate curve for IFRS 17' ];
+    var risk_adjustments = ['Risk adjustment loadings for Fire', 'Risk adjustment loadings for Health', 'Risk adjustment loadings for Misc', 'Risk adjustment loadings for Fire Motor'];
+    var claim_patterns = ['Claim pattern for Fire', 'Claim pattern for Marine', 'Claim pattern for Motor', 'Claim pattern for Misc', 'Claim pattern for Health'];
+    var Gmm_input= ['GMM Input file'];
+
+    // Hardcoded route and token
+    var route = '/api/save-provisions';
+    var token = 'your_csrf_token_here';
+
     var onbeforeinsertrow = function(instance) {
         return false;
     }
+
+    console.log(data);
     var js = jspreadsheet(document.getElementById('spreadsheet'), {
         data: data,
         search: true,
@@ -17,7 +484,7 @@ $(document).ready(function() {
         columns: [
             {
                 type: 'text',
-                title: 'Product Code',
+                title: 'GMM Product Code',
                 width: 200,
                 readOnly: true,
             },
@@ -27,7 +494,6 @@ $(document).ready(function() {
                 width: 200,
                 readOnly: true,
             },
-
             {
                 type: 'text',
                 title: 'System Department',
@@ -36,7 +502,7 @@ $(document).ready(function() {
             },
             {
                 type: 'dropdown',
-                title: 'Discount Rates (LIC) ',
+                title: 'Discount Rates (LIC)',
                 width: 150,
                 source: discount_rates,
             },
@@ -51,21 +517,28 @@ $(document).ready(function() {
                 title: 'IBNR',
                 width: 150,
                 source: ibnr,
-                selected: 1
+                selected: 0
             },
+           
             {
                 type: 'dropdown',
-                title: 'Risk Adjustments (LIC)',
+                title: 'Risk Adjustments (LIC) ',
                 width: 150,
                 autocomplete: true,
                 source: risk_adjustments,
             },
             {
                 type: 'dropdown',
-                title: 'Risk Adjustments (LRC) ',
+                title: 'Risk Adjustments (LRC)',
                 width: 150,
                 autocomplete: true,
                 source: risk_adjustments,
+            },
+             {
+                type: 'dropdown',
+                title: 'GMM Inputs',
+                width: 150,
+                source: Gmm_input,
             },
             {
                 type: 'dropdown',
@@ -74,46 +547,10 @@ $(document).ready(function() {
                 autocomplete: true,
                 source: claim_patterns,
             },
-            {
-                type: 'dropdown',
-                title: 'GMM Inputs',
-                width: 150,
-                source: ['Period', 'Premium', 'Claims', 'Expenses', 'Iacf', 'Coverage Units'],
-            },
-            {
-                type: 'hidden',
-                title: 'Expense Allocation',
-                width: 100,
-            },
-            {
-                type: 'hidden',
-                title: 'Earning Pattern',
-                width: 100,
-                source: ["Uniform Exposure", "Increasing Exposure"]
-            },
-            {
-                type: 'hidden',
-                title: 'Recovery Ratio',
-                width: 100,
-            },
-            {
-                type: 'hidden',
-                title: 'system_department_id',
-            },
-            {
-                type: 'hidden',
-                title: 'provisionMapping_id',
-            },
-            {
-                type: 'hidden',
-                title: 'product_code_id',
-            },
-
+         
         ],
-        onbeforeinsertrow: onbeforeinsertrow,
-        onload: onload
+        onbeforeinsertrow: onbeforeinsertrow
     });
-
 
     $('#save').click(function() {
         toastr['warning']("Processing Data.. Please wait", 'Warning!', {
@@ -121,10 +558,8 @@ $(document).ready(function() {
             tapToDismiss: false,
         });
         var data = js.getJson();
-        console.log(data);
         var validate = true;
-        var route = $('#route').data('route');
-        var token = $('#route').data('token');
+        
         $.each(data, function(i, value) {
             var errorCount = 0;
             keys = ['description', 'system_department_name', 'portfolio_code', 'organization_name'];
@@ -136,7 +571,7 @@ $(document).ready(function() {
                         validate = true;
                     }
                     errorCount++;
-                    if (errorCount > 0 && key != 'provisionMapping_id' && (!$.isNumeric(value['ulr']) || !$.isNumeric(value['earning_pattern']) || !$.isNumeric(value['expense_allocation']))) {
+                    if (errorCount > 0 && key != 'provisionMapping_id') {
                         toastr['error']('Column "' + key + '" in ' + parseInt(i + 1) + " Row cannot be empty", 'Error!', {
                             closeButton: true,
                             tapToDismiss: false,
@@ -145,7 +580,7 @@ $(document).ready(function() {
                         return false;
                     }
                 }
-                if (key === 're_recovery_ratio' || key === 'expense_allocation') {
+                if (key === 'ulr' || key === 'expense_allocation') {
                     if (!$.isNumeric(value[key])) {
                         toastr['error']('Column "' + key + '" in ' + parseInt(i + 1) + " must be a numeric value.", 'Error!', {
                             closeButton: true,
@@ -157,15 +592,16 @@ $(document).ready(function() {
                     }
                 }
                 validColumn(col, i)
-                //Delete unnecessary columns
                 if (jQuery.inArray(key, keys) !== -1) {
                     delete value[key];
                 }
                 col++;
             }
         });
+        
         data = JSON.stringify(data);
         console.log(data);
+        
         if (validate) {
             $('#save').prop('disabled', true);
             $.ajax({
@@ -183,7 +619,6 @@ $(document).ready(function() {
                     });
                     setTimeout(function() {
                         location.reload();
-
                     }, 1500);
                 },
                 error: function(response, error) {
@@ -203,7 +638,6 @@ $(document).ready(function() {
             });
             $('.validate-msg').show();
         }
-
     });
 
     function validColumn(col, i) {
