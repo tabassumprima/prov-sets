@@ -226,15 +226,6 @@ return [
                 'create-discount-rate',
                 'update-status-discount-rate',
             ],
-             //gmm discount rate
-            'Discount Rates Gmm' => [
-                'view-discount-rate-gmm',
-            ],
-               //gmm discount rate file
-            'Discount Rates File Gmm' => [
-                'view-discount-rate-file-gmm',
-                'download-discount-rate-file',
-            ],
             //Ibnr assumption
             'Ibnr Assumptions' => [
                 'view-ibnr-assumption',
